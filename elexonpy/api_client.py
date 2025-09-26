@@ -123,8 +123,8 @@ class ApiClient(object):
                 )
 
         # query parameters
+        change_to_dataframe, query_params = self.format_to_dataframe(query_params)
         if query_params:
-            change_to_dataframe, query_params = self.format_to_dataframe(query_params)
             query_params = self.sanitize_for_serialization(query_params)
             query_params = self.parameters_to_tuples(query_params,
                                                      collection_formats)
