@@ -5,6 +5,8 @@ from datetime import datetime
 import pandas as pd
 from elexonpy.api_client import ApiClient
 from elexonpy.api.demand_api import DemandApi
+from elexonpy.batch import fetch_historical_data
+
 
 # Initialize API client
 api_client = ApiClient()
@@ -26,6 +28,7 @@ df = demand_api.demand_actual_total_get(
 # Print Actual Total Load Data DataFrame
 print("\n--- Actual Total Load Data ---")
 print((df.head()))
+df.to_clipboard()
 
 # Define date range
 from_date = datetime(2024, 6, 1)
@@ -43,4 +46,3 @@ df = pd.DataFrame([data.to_dict() for data in response.data])
 # Print Demand Outturn Daily Data DataFrame
 print("\n--- Demand Outturn Daily Data ---")
 print((df.head()))
-
